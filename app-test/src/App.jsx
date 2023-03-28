@@ -2,6 +2,7 @@ import "./App.css";
 import PokemonCard from "../components/pokemonCard";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import Navbar from "../components/Navbar";
 
 function App() {
   const pokemonList = [
@@ -44,15 +45,17 @@ function App() {
 
   return (
     <div>
-      {index < pokemonList.length - 1 ? (
-        <button onClick={handleClickPlus}>Next</button>
+      <Navbar
+        handleClickPlus={handleClickPlus}
+        handleClickMinus={handleClickMinus}
+        index={index}
+        pokemonList={pokemonList}
+      />
+      {index >= 0 && index < pokemonList.length ? (
+        <PokemonCard pokemon={pokemonList[index]} />
       ) : (
         ""
       )}
-
-      <PokemonCard pokemon={pokemonList[index]} />
-
-      {index > 0 ? <button onClick={handleClickMinus}>Previous</button> : ""}
     </div>
   );
 }
