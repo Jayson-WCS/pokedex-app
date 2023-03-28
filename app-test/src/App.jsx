@@ -1,6 +1,7 @@
 import "./App.css";
 import PokemonCard from "../components/pokemonCard";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function App() {
   const pokemonList = [
@@ -10,18 +11,22 @@ function App() {
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
     },
     {
-      name: "ivysaur",
+      name: "charmander",
       imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
     },
     {
-      name: "venusaur",
+      name: "squirtle",
       imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+    },
+    {
+      name: "pikachu",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
     },
     {
       name: "mew",
-      imgSrc: "",
     },
   ];
 
@@ -32,11 +37,21 @@ function App() {
     }).isRequired,
   };
 
+  let [index, setIndex] = useState(0);
+
+  const handleClickPlus = () => {
+    setIndex(++index);
+  };
+
+  const handleCLickMinus = () => {
+    setIndex(--index);
+  };
+
   return (
     <div>
-      {pokemonList.map((pokemon, i) => {
-        return <PokemonCard key={i} pokemon={pokemon} />;
-      })}
+      <button onClick={handleClickPlus}>Next</button>
+      <PokemonCard pokemon={pokemonList[index]} />
+      <button onClick={handleCLickMinus}>Next</button>
     </div>
   );
 }
