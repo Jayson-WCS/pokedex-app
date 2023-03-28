@@ -39,19 +39,20 @@ function App() {
 
   let [index, setIndex] = useState(0);
 
-  const handleClickPlus = () => {
-    setIndex(++index);
-  };
-
-  const handleCLickMinus = () => {
-    setIndex(--index);
-  };
+  const handleClickPlus = () => setIndex(index + 1);
+  const handleClickMinus = () => setIndex(index - 1);
 
   return (
     <div>
-      <button onClick={handleClickPlus}>Next</button>
+      {index < pokemonList.length - 1 ? (
+        <button onClick={handleClickPlus}>Next</button>
+      ) : (
+        ""
+      )}
+
       <PokemonCard pokemon={pokemonList[index]} />
-      <button onClick={handleCLickMinus}>Next</button>
+
+      {index > 0 ? <button onClick={handleClickMinus}>Previous</button> : ""}
     </div>
   );
 }
