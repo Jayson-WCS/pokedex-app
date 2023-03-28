@@ -1,10 +1,9 @@
-function PokemonCard(props) {
-  const { name, imgSrc } = props.pokemon;
+function PokemonCard({ pokemon }) {
 
   return (
     <figure>
-      {imgSrc ? <img src={imgSrc} alt={name} /> : <p>???</p>}
-      <figcaption>{name}</figcaption>
+      {pokemon.imgSrc ? <img src={pokemon.imgSrc} alt={pokemon.name} /> : <p>???</p>}
+      <figcaption>{pokemon.name}</figcaption>
     </figure>
   );
 }
