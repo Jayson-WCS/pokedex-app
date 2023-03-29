@@ -38,24 +38,17 @@ function App() {
     }).isRequired,
   };
 
-  let [index, setIndex] = useState(0);
-
-  const handleClickPlus = () => setIndex(index + 1);
-  const handleClickMinus = () => setIndex(index - 1);
+  let [curPokemon, setCurPokemon] = useState(0);
+  const handlePokemonClick = (index) => setCurPokemon(index);
 
   return (
     <div>
       <Navbar
-        handleClickPlus={handleClickPlus}
-        handleClickMinus={handleClickMinus}
-        index={index}
+        handlePokemonClick={handlePokemonClick}
         pokemonList={pokemonList}
+        curPokemon={curPokemon}
       />
-      {index >= 0 && index < pokemonList.length ? (
-        <PokemonCard pokemon={pokemonList[index]} />
-      ) : (
-        ""
-      )}
+      <PokemonCard pokemon={pokemonList[curPokemon]} />
     </div>
   );
 }
