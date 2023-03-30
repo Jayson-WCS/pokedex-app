@@ -1,12 +1,16 @@
-function Navbar({ handlePokemonClick, pokemonList }) {
+
+
+function Navbar({ handlePokemonClick, pokemonList, curPokemon }) {
+  curPokemon === 3 ? alert("pika pikachu") : null;
+
   return (
-    <div>
-      {pokemonList.map((pokemon, index) => (
-        <button key={index} onClick={() => handlePokemonClick(index)}>
-          {pokemon.name}
-        </button>
-      ))}
-    </div>
+      <div>
+        {pokemonList.map((pokemon, index) => (
+          <button key={index} onClick={() => handlePokemonClick(index)}>
+            {pokemon.name}
+          </button>
+        ))}
+      </div>
   );
 }
 
